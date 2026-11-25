@@ -2,10 +2,9 @@ export const SERVICES = [
   {
     n: '01',
     title: 'Teto Solar',
-    text: 'Vazamento, travamento, ruído, cortina, motor, lubrificação e revisão. Peças e procedimentos Webasto, a maior fabricante de tetos solares do mundo.',
+    text: 'Vazamento, travamento, ruído, cortina, motor, lubrificação e revisão.',
     image: '/img/servico-teto-solar.webp',
     alt: 'Interior de Jetta visto de cima, com teto solar aberto, em conserto na Fallcar',
-    badge: 'Autorizada Webasto',
     cta: 'Fale sobre teto solar',
     origem: 'servico-teto-solar',
     waMsg: 'Olá, Fallcar! Quero orçamento de conserto de teto solar. Meu carro é:'
@@ -82,6 +81,5 @@ export const FAQS = [
   { q: 'Quanto tempo o carro fica na oficina?', a: 'Depende do serviço e da peça. Mande fotos pelo WhatsApp e informamos o prazo junto com o orçamento.' },
   { q: 'Vocês atendem carro atingido por enchente?', a: 'Sim. Removemos bancos e carpete, secamos a estrutura, tratamos odor e mofo e recuperamos ou substituímos o que não voltar. Quanto antes o carro chegar, menos peças precisam ser trocadas.' },
   { q: 'Vocês trabalham com reforma e projetos de carros antigos?', a: 'Sim. Trabalhamos com carros antigos e clássicos, como Fusca, Brasília e Speedster, de diversos modelos. Assumimos o projeto para que o carro fique do jeito que você sempre sonhou.' },
-  { q: 'Precisa agendar?', a: 'Recomendamos combinar antes. Mande uma foto e a placa pelo WhatsApp e orientamos o melhor dia e a unidade mais próxima.' },
-  { q: 'Trabalham com peça original Webasto?', a: 'Sim. Somos loja autorizada Webasto, a maior fabricante de tetos solares do mundo.' }
+  { q: 'Precisa agendar?', a: 'Recomendamos combinar antes. Mande uma foto e a placa pelo WhatsApp e orientamos o melhor dia e a unidade mais próxima.' }
 ];

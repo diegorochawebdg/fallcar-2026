@@ -76,8 +76,8 @@ Na página de design (`Fallcar Site.dc.html`) o equivalente é `showInstagram: f
 ## Publicação no GitHub Pages
 
 - `.github/workflows/deploy.yml` faz o build (`npm ci` + `npm run build`) e publica a pasta `dist` a cada push na `main`.
-- No repositório: Settings → Pages → Source: **GitHub Actions**. O domínio `www.fallcar.com.br` está em `public/CNAME`.
-- DNS: o `www` aponta (CNAME) para `<usuario>.github.io`; o domínio raiz usa os registros A do GitHub Pages. Marque "Enforce HTTPS" depois que o certificado for emitido.
+- No repositório: Settings → Pages → Source: **GitHub Actions**. O domínio oficial `fallcar.com.br` (sem www) está em `public/CNAME`; ao ser configurado em Settings → Pages → Custom domain, o GitHub redireciona o `www` para ele.
+- DNS: no domínio raiz `fallcar.com.br`, criar os registros A para 185.199.108.153, 185.199.109.153, 185.199.110.153 e 185.199.111.153 (e, se quiser IPv6, os AAAA 2606:50c0:8000::153 a 8003::153); no `www`, um CNAME para `<usuario>.github.io`. Marque "Enforce HTTPS" depois que o certificado for emitido.
 - Se o site atual já está num repositório do GitHub Pages, o mais simples é substituir o conteúdo desse repositório por este projeto (o CNAME e o domínio continuam valendo).
 - O Instagram segue oculto; para ativar, ver a seção acima. O workflow já aceita os segredos `IG_USER_ID` e `IG_TOKEN` e tem um build diário comentado.
 
@@ -86,3 +86,6 @@ Na página de design (`Fallcar Site.dc.html`) o equivalente é `showInstagram: f
 - GTM: `GTM_ID = 'GTM-W9H5SJVN'` em `src/data/site.js` (mesmo contêiner do site atual). Eventos enviados ao dataLayer: `whatsapp_click`, `phone_click`, `form_submit`, `rota_click`, `reviews_click`.
 - Avaliações: nota (4,5) e total (74) do perfil do Google da unidade Osasco, conferidos em 14/11/2026, ficam em `RATING` e `REVIEWS` (`src/data/content.js`) e foram digitados manualmente. Atualize de tempos em tempos. Não usamos marcação de nota nos dados estruturados, pois o Google não exibe estrelas para avaliações do próprio site.
 - Horário de funcionamento: segunda a sexta, 8h às 18h; sábado e domingo fechados (conforme o perfil do Google, 14/11/2026). Fica em `hours` de cada unidade em `src/data/site.js` e em `openingHoursSpecification` no `index.astro`. Confirmar se Campos Elíseos tem o mesmo horário.
+- Contatos de WhatsApp por unidade: `contact` e `whatsapp` de cada unidade em `src/data/site.js` (Osasco: Beto, (11) 94782-0539; Centro de São Paulo: Luiz, (11) 94729-2623). Alimentam o menu "WhatsApp" do topo e o botão de cada card de unidade. Confirmar que o (11) 94729-2623 é mesmo o WhatsApp do Luiz.
+- Foto do hero: `public/img/hero.webp` (retrato 900x1200, placa do carro desfocada). A foto anterior (interior de Speedster) está arquivada em `uploads/hero-speedster-anterior.webp` na pasta do projeto de design.
+- Webasto: a Fallcar não é mais autorizada (a marca saiu do Brasil), então a marca foi removida de textos, selos, FAQ e imagem de compartilhamento.

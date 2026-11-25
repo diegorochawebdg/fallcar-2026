@@ -27,6 +27,18 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
   }
 
+  // Menu de WhatsApp do topo (uma opção por unidade)
+  const waMenu = document.querySelector('[data-wa-menu]');
+  if (waMenu) {
+    const btn = waMenu.querySelector('.wa-menu__btn');
+    const list = waMenu.querySelector('.wa-menu__list');
+    const setWa = (open) => { btn.setAttribute('aria-expanded', String(open)); list.hidden = !open; };
+    btn.addEventListener('click', () => setWa(btn.getAttribute('aria-expanded') !== 'true'));
+    list.addEventListener('click', (e) => { if (e.target.closest('a')) setWa(false); });
+    document.addEventListener('click', (e) => { if (!waMenu.contains(e.target)) setWa(false); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setWa(false); });
+  }
+
   // Botão flutuante depois do hero
   const fab = document.querySelector('.fab');
   if (fab) {

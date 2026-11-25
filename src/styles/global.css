@@ -67,7 +67,7 @@ h1{font-size:84px;line-height:.9;margin-bottom:22px;text-wrap:balance}
 h1 em{font-style:normal;color:var(--red-ink)}
 .hero-copy .lead{max-width:480px;margin-bottom:32px}
 .hero-ctas{display:flex;gap:12px;margin-bottom:48px}
-.facts{margin-top:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.facts{margin-top:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line)}
 .facts div{padding:18px 12px 20px;border-left:1px solid var(--line)}
 .facts div:first-child{border-left:0;padding-left:0}
 .facts b{display:block;font-family:var(--display);font-weight:400;font-size:26px;line-height:1;color:#fff}
@@ -220,3 +220,16 @@ form.quote .fine{font-size:12px;line-height:1.5;color:var(--muted-2)}
 .logo img + span{display:none}
 .ph video{position:relative;z-index:1}
 .link-underline{white-space:nowrap}
+
+/* foto do hero: retrato, mantém o rosto visível */
+.hero-photo .ph img{object-position:50% 22%}
+@media (max-width:900px){.hero-photo .ph img{object-position:50% 4%}}
+
+/* menu de WhatsApp do topo */
+.wa-menu{position:relative}
+.wa-menu__list{position:absolute;right:0;top:calc(100% + 10px);min-width:260px;margin:0;padding:6px;list-style:none;background:var(--bg-alt);border:1px solid var(--outline);border-radius:6px;box-shadow:0 18px 40px rgba(0,0,0,.5);z-index:70}
+.wa-menu__list[hidden]{display:none}
+.wa-menu__list a{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border-radius:4px;color:var(--text)}
+.wa-menu__list a:hover{background:var(--field);color:#fff}
+.wa-menu__list b{font-weight:600;font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.wa-menu__list small{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2)}

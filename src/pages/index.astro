@@ -17,9 +17,9 @@ const fmtDate = (iso) => {
 const truncate = (s, n) => (s && s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + '…' : (s || ''));
 
 const title = 'Teto Solar e Tapeçaria Automotiva em Osasco e SP | Fallcar';
-const description = 'Conserto de teto solar, tapeçaria automotiva e higienização de interior em Osasco e São Paulo. Loja autorizada Webasto. Peça orçamento pelo WhatsApp.';
+const description = 'Conserto de teto solar, tapeçaria automotiva e higienização de interior em Osasco e São Paulo. Peça orçamento pelo WhatsApp.';
 
-const SITE = 'https://www.fallcar.com.br';
+const SITE = 'https://fallcar.com.br';
 const OG_IMAGE = SITE + '/img/og-share.jpg';
 const SERVICES_LD = SERVICES.map((s) => ({
   '@type': 'Offer',
@@ -89,6 +89,8 @@ const schema = {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google Tag Manager: o mais alto possível no <head> (o <noscript> correspondente fica logo após <body>) -->
+  {GTM_ID && <script is:inline set:html={"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" + GTM_ID + "');"} />}
   <title>{title}</title>
   <meta name="description" content={description} />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -124,7 +126,6 @@ const schema = {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <script type="application/ld+json" set:html={JSON.stringify(schema)} />
-  {GTM_ID && <script is:inline set:html={"(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','" + GTM_ID + "');"} />}
 </head>
 <body>
 {GTM_ID && <noscript><iframe src={"https://www.googletagmanager.com/ns.html?id=" + GTM_ID} height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>}
@@ -146,7 +147,14 @@ const schema = {
     </nav>
     <div class="header-actions">
       <a class="header-tel" href="tel:+5511947820539" data-track="phone_click">(11) 94782-0539</a>
-      <a class="btn btn--primary btn--sm" href={wa('Olá, Fallcar! Vim pelo site e quero falar sobre meu carro.')} target="_blank" rel="noopener" data-track="whatsapp_click" data-origem="header">WhatsApp</a>
+      <div class="wa-menu" data-wa-menu>
+        <button type="button" class="btn btn--primary btn--sm wa-menu__btn" aria-haspopup="true" aria-expanded="false" aria-controls="wa-menu-list">WhatsApp <span aria-hidden="true">▾</span></button>
+        <ul class="wa-menu__list" id="wa-menu-list" hidden>
+          {UNITS.map((u) => (
+            <li><a href={wa('Olá, ' + u.contact + '! Vim pelo site e quero falar sobre meu carro.', u.whatsapp)} target="_blank" rel="noopener" data-track="whatsapp_click" data-origem={'header-' + u.slug}><b>{u.menuLabel}</b><small>{u.contact}</small></a></li>
+          ))}
+        </ul>
+      </div>
       <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
     </div>
   </div>
@@ -167,18 +175,17 @@ const schema = {
     <div class="hero">
       <div class="hero-copy">
         <div class="hero-rule">
-          <span class="eyebrow">Autorizada Webasto</span>
+          <span class="eyebrow">Tapeçaria e Teto Solar</span>
           <i></i>
           <span class="age">+30 anos</span>
         </div>
         <h1>Tapeçaria automotiva e <em>teto solar</em> em Osasco e São Paulo.</h1>
-        <p class="lead">Estofamento em couro, higienização de interior e conserto de teto solar (vazamento, travamento e ruído) com acabamento impecável. Loja autorizada Webasto, com unidades em Osasco e Campos Elíseos.</p>
+        <p class="lead">Estofamento em couro, higienização de interior e conserto de teto solar (vazamento, travamento e ruído) com acabamento impecável. Com unidades em Osasco e Campos Elíseos.</p>
         <div class="hero-ctas">
           <a class="btn btn--primary" href={wa('Olá, Fallcar! Quero um orçamento. Posso mandar uma foto?')} target="_blank" rel="noopener" data-track="whatsapp_click" data-origem="hero">Fale no WhatsApp</a>
           <a class="btn btn--ghost" href="tel:+5511947820539" data-track="phone_click">Ligue agora</a>
         </div>
         <div class="facts">
-          <div><b>Webasto</b><small>Autorizada</small></div>
           <div><b>+30 anos</b><small>De oficina</small></div>
           <div><b>2 unidades</b><small>Osasco · SP</small></div>
           <div><b>{RATING.score} ★</b><small>Google · {RATING.count} avaliações</small></div>
@@ -186,7 +193,7 @@ const schema = {
       </div>
       <div class="hero-photo">
         <div class="ph" data-empty="Foto herói — interior de Speedster">
-          <img src="/img/hero.webp" alt="Interior de Speedster com bancos e capota em couro laranja, tapeçaria feita na Fallcar" fetchpriority="high" width="720" height="720" onerror="this.remove()" />
+          <img src="/img/hero.webp" alt="Profissional de avental, com os braços cruzados, ao lado de um carro preto na oficina" fetchpriority="high" width="900" height="1200" onerror="this.remove()" />
         </div>
       </div>
     </div>
@@ -435,7 +442,7 @@ const schema = {
               </div>
               <div class="actions">
                 <a class="btn btn--ghost btn--sm" href={u.route} target="_blank" rel="noopener" data-track="rota_click" data-unidade={u.schema.city}>Trace a rota</a>
-                <a class="btn btn--primary btn--sm" href={wa(u.waMsg)} target="_blank" rel="noopener" data-track="whatsapp_click" data-origem={'unidade-' + u.schema.city.toLowerCase()}>WhatsApp</a>
+                <a class="btn btn--primary btn--sm" href={wa(u.waMsg, u.whatsapp)} target="_blank" rel="noopener" data-track="whatsapp_click" data-origem={'unidade-' + u.slug}>WhatsApp</a>
               </div>
             </div>
           </div>

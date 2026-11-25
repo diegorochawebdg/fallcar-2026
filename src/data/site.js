@@ -20,6 +20,10 @@ export const UNITS = [
     address: 'Av. Hildebrando de Lima, 34, KM 18, Osasco/SP',
     phone: '(11) 94782-0539',
     tel: '+5511947820539',
+    slug: 'osasco',
+    menuLabel: 'Osasco',
+    contact: 'Beto',
+    whatsapp: '5511947820539',
     hours: 'Seg a sex 8h–18h · Sáb e dom fechado',
     mapTitle: 'Mapa da unidade Osasco',
     map: 'https://www.google.com/maps?q=Av.+Hildebrando+de+Lima,+34,+Osasco&output=embed',
@@ -32,6 +36,10 @@ export const UNITS = [
     address: 'Alameda Nothmann, 1027, Campos Elíseos, São Paulo/SP',
     phone: '(11) 3825-5333 · (11) 94729-2623',
     tel: '+551138255333',
+    slug: 'sp',
+    menuLabel: 'Centro de São Paulo',
+    contact: 'Luiz',
+    whatsapp: '5511947292623',
     hours: 'Seg a sex 8h–18h · Sáb e dom fechado',
     mapTitle: 'Mapa da unidade Campos Elíseos',
     map: 'https://www.google.com/maps?q=Alameda+Nothmann,+1027,+Campos+El%C3%ADseos,+S%C3%A3o+Paulo&output=embed',
@@ -41,6 +49,6 @@ export const UNITS = [
   }
 ];
 
-export function wa(msg) {
-  return 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+export function wa(msg, number = WHATSAPP) {
+  return 'https://wa.me/' + number + '?text=' + encodeURIComponent(msg);
 }
